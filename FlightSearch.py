@@ -1,6 +1,6 @@
 # Load in all the Airports and IDs and Make a dictionary out of it
 # airportDict: Key = ID, Value = Airport Code
-import datetime as dt, pandas as pd, requests, geopy.distance, smtplib, ssl, time
+import datetime as dt, pandas as pd, requests, geopy.distance, smtplib, ssl, time, util
 airports = pd.read_csv("air-routes-latest-nodes.csv", usecols=[0, 3], header=0)
 airports = airports.drop(airports.index[0])
 airports = airports.drop(airports.index[3504:])
@@ -119,6 +119,50 @@ def flightSearch(origin, destination, firstDepartureDate, layoverAirport, layove
             minPrice = itinerary["price"]
             bestItinerary = itinerary
     return bestItinerary
+
+# A* Heuristic Flight Search
+def aStarSearch(origin, destination, firstDepartureDate, layoverAirport, layoverDuration, problem, heuristic):
+    searchData = {
+    "requests": [
+        {
+        "to": layoverAirport,
+        "flyFrom": origin,
+        "dateFrom": convertDate(firstDepartureDate),
+        "dateTo": convertDate(firstDepartureDate)
+        },
+        {
+        "to": destination,
+        "flyFrom": layoverAirport,
+        "dateFrom": convertDate(firstDepartureDate + dt.timedelta(days = layoverDuration)),
+        "dateTo": convertDate(firstDepartureDate + dt.timedelta(days = layoverDuration))
+        }
+    ]
+    }
+    response = requests.post(URLEndpoint, headers = header, json = searchData)
+    if not response.json():
+        return
+    minPrice = response.json()[0]["price"]
+    bestItinerary = response.json()[0]
+    for itinerary in response.json():
+        if itinerary["price"] < minPrice:
+            minPrice = itinerary["price"]
+            bestItinerary = itinerary
+    reached = set()
+    frontier = util.PriorityQueue()
+    startstate = [problem.getStartState(), []]
+    frontier.push(startstate, heuristic(startstate[0], problem))
+    while not frontier.isEmpty():
+        node = frontier.pop()
+        if problem.isGoalState(node[0]):
+            return node[1]
+        if node[0] not in reached:
+            reached.add(node[0])
+            triples = problem.getSuccessors(node[0])
+            for child in triples:
+                updatedstate = [child[0], node[1] + [child[1]]]
+                frontier.push(updatedstate, problem.getCostOfActions(updatedstate[1]) + heuristic(updatedstate[0], problem))
+    return bestItinerary
+
 
 def bigFlightSearch(origin, destination, firstDepartureDate, layoverDuration):
     results = []
