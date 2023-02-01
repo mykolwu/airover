@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MS2LLM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AirOver</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS2LLM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='logo.png') }}" alt="AirOver Logo" height="50px" width="200px"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!--   <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Join</a>
+              </li>-->
+                    </ul>
+                </div>
+        </nav>
+        <div class="d-flex justify-content-center">
+            <img src="{{ url_for('static', filename='second.png') }}" alt="Front" height="300px" width="600" class="img-fluid" 
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="container">
+            <br><br><br><br>
+            <div class="row align-items-center">
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverAirport %}
+                    <h3>{{firstLayoverAirport}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverDuration %}
+                    <h3>{{firstLayoverDuration}} nights</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAirlinePic %}
+                    <img src={{firstAirlinePic}} alt="Front" height="50px" width="50" class="img-fluid"> 
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstTotalCost %}
+                    <h3>${{firstTotalCost}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-success" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAmountSaved %}
+                    <h3>${{firstAmountSaved}} saved</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+              <center>
+                <button type="button" class="btn-lg btn-success">Select</button>
+              </center>
+              </div>
+            </div>
+            <br><br>
+
+            <div class="row align-items-center">
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverAirport2 %}
+                    <h3>{{firstLayoverAirport2}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverDuration2 %}
+                    <h3>{{firstLayoverDuration2}} nights</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAirlinePic2 %}
+                    <img src={{firstAirlinePic2}} alt="Front" height="50px" width="50" class="img-fluid"> 
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstTotalCost2 %}
+                    <h3>${{firstTotalCost2}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-success" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAmountSaved2 %}
+                    <h3>${{firstAmountSaved2}} saved</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+              <center>
+                <button type="button" class="btn-lg btn-success">Select</button>
+              </center>
+              </div>
+            </div>
+            <br><br>
+
+            <div class="row align-items-center">
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverAirport3 %}
+                    <h3>{{firstLayoverAirport3}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverDuration3 %}
+                    <h3>{{firstLayoverDuration3}} nights</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAirlinePic3 %}
+                    <img src={{firstAirlinePic3}} alt="Front" height="50px" width="50" class="img-fluid"> 
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstTotalCost3 %}
+                    <h3>${{firstTotalCost3}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-success" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAmountSaved3 %}
+                    <h3>${{firstAmountSaved3}} saved</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+              <center>
+                <button type="button" class="btn-lg btn-success">Select</button>
+              </center>
+              </div>
+            </div>
+            <br><br>
+
+            <div class="row align-items-center">
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverAirport4 %}
+                    <h3>{{firstLayoverAirport4}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverDuration4 %}
+                    <h3>{{firstLayoverDuration4}} nights</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAirlinePic4 %}
+                    <img src={{firstAirlinePic4}} alt="Front" height="50px" width="50" class="img-fluid"> 
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstTotalCost4 %}
+                    <h3>${{firstTotalCost4}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-success" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAmountSaved4 %}
+                    <h3>${{firstAmountSaved4}} saved</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+              <center>
+                <button type="button" class="btn-lg btn-success">Select</button>
+              </center>
+              </div>
+            </div>
+            <br><br>
+
+            <div class="row align-items-center">
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverAirport5 %}
+                    <h3>{{firstLayoverAirport5}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstLayoverDuration5 %}
+                    <h3>{{firstLayoverDuration5}} nights</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAirlinePic5 %}
+                    <img src={{firstAirlinePic5}} alt="Front" height="50px" width="50" class="img-fluid"> 
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstTotalCost5 %}
+                    <h3>${{firstTotalCost5}}</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-success" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+                  <center>
+                    {% if firstAmountSaved5 %}
+                    <h3>${{firstAmountSaved5}} saved</h3>
+                    {% endif %}
+                  </center>
+              </div>
+              <div class="col text-center text-white" style="background-color:#A390E4; height: 200px; max-width: 16.6%;">
+              <center>
+                <button type="button" class="btn-lg btn-success">Select</button>
+              </center>
+              </div>
+            </div>
+            <br><br>
+
+          </div>
+        <!-- <div class="row">
+            <div class="col-md">
+                <br>
+                <br>
+                <div class="text-white my-3 py-3 card text-center" style="background-color:#A390E4">
+                    <div class="card-body">
+                        Flight 1
+                    </div>
+                </div>
+                <br>
+                <div class="text-white my-3 py-3 card text-center" style="background-color:#A390E4">
+                    <div class="card-body">
+                        Flight 2
+                    </div>
+                </div>
+                <br>
+                <div class="text-white my-3 py-3 card text-center" style="background-color:#A390E4">
+                    <div class="card-body">
+                        Flight 3
+                    </div>
+                </div>
+                <br>
+                <div class="text-white my-3 py-3 card text-center" style="background-color:#A390E4">
+                    <div class="card-body">
+                        Flight 4
+                    </div>
+                </div>
+                <br>
+                <div class="text-white my-3 py-3 card text-center" style="background-color:#A390E4">
+                    <div class="card-body">
+                        Flight 5
+                    </div>
+                </div>
+                <br>
+            </div>
+            
+        </div> -->
+    </div>
+
+
+    </main>
+    <!-- Footer -->
+    <footer class="text-center text-black" style="background-color: #f7ebec">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Form -->
+            <section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Join Beta</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-5 col-12">
+                            <!-- Email input -->
+                            <div class="form-outline form-black mb-4">
+                                <input type="email" id="form5Example21" class="form-control" />
+                                <label class="form-label" for="form5Example21">Email address</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-dark mb-4">
+                                Join
+                            </button>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+            </section>
+            <!-- Section: Form -->
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Submit your email address to join our beta team and to enjoy the permenant benefits and discounts
+                    available to our first 5000 adopters!
+                </p>
+            </section>
+            <!-- Section: Text -->
+
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #A390E4;">
+            2022 &copy AirOver Inc.
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
